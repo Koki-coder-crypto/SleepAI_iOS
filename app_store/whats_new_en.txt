@@ -1,0 +1,6 @@
+Welcome to SleepAI 1.0!
+• Sleep tracking with bedtime/wake time setup
+• AI-powered morning sleep analysis
+• Sleep quality charts and trends
+• Science-based daily sleep coaching tips
+• Beautiful star particle animations

@@ -1,0 +1,37 @@
+name: SleepAI
+options:
+  bundleIdPrefix: com.kokicoder
+  deploymentTarget:
+    iOS: "17.0"
+  createIntermediateGroups: true
+
+settings:
+  base:
+    SWIFT_VERSION: "5.9"
+    DEVELOPMENT_TEAM: "$(DEVELOPMENT_TEAM)"
+    CODE_SIGN_STYLE: Automatic
+    MARKETING_VERSION: "1.0.0"
+    CURRENT_PROJECT_VERSION: "1"
+    ANTHROPIC_API_KEY: "$(ANTHROPIC_API_KEY)"
+    ENABLE_USER_SCRIPT_SANDBOXING: NO
+
+targets:
+  SleepAI:
+    type: application
+    platform: iOS
+    bundleId: com.kokicoder.sleepai
+    sources:
+      - path: ios_app
+    info:
+      path: ios_app/Info.plist
+      properties:
+        UILaunchScreen: {}
+        NSUserNotificationsUsageDescription: "SleepAI needs notification permission for your wake-up alarm."
+        UIUserInterfaceStyle: Dark
+        SKAdNetworkItems:
+          - SKAdNetworkIdentifier: cstr6suwn9.skadnetwork
+    settings:
+      base:
+        INFOPLIST_FILE: ios_app/Info.plist
+        PRODUCT_BUNDLE_IDENTIFIER: com.kokicoder.sleepai
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon

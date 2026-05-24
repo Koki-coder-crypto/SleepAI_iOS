@@ -1,0 +1,29 @@
+SleepAI - Sleep Coach & Tracker
+
+Track your sleep, wake up refreshed, and receive personalized AI coaching to improve your sleep quality every night.
+
+YOUR PERSONAL SLEEP COACH
+SleepAI tracks your sleep sessions and delivers Claude AI-powered morning analyses with actionable insights tailored to your unique sleep patterns.
+
+FEATURES
+• Sleep tracking with bedtime/wake time setup
+• Beautiful moon orb UI with star particle animations
+• AI morning analysis powered by Claude
+• Sleep quality rating (1-5 stars)
+• Sleep duration charts and trends
+• Science-based daily sleep tips
+• Session notes and observations
+
+SLEEPAI PRO
+• Unlimited sleep tracking (free: 5/month)
+• Personalized AI analysis every morning
+• Full 7-day and 30-day analytics
+• Complete sleep history
+• Premium sleep coaching tips
+
+SCIENCE-BASED SLEEP TIPS
+Daily tips covering consistent schedules, environment optimization, bedtime routines, caffeine management, morning light exposure, and relaxation techniques.
+
+Wake up every morning knowing exactly how you slept and what to do to sleep better tonight.
+
+Privacy: Your sleep data is stored locally on your device and never shared.
