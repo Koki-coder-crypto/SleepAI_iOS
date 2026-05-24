@@ -4,6 +4,7 @@ import UserNotifications
 struct SleepView: View {
     @EnvironmentObject var store: StoreManager
     @ObservedObject var sleepStore: SleepStore
+    @State private var ambientPhase = false
     @State private var bedtime = Calendar.current.date(bySettingHour: 23, minute: 0, second: 0, of: Date()) ?? Date()
     @State private var wakeTime = Calendar.current.date(bySettingHour: 7, minute: 0, second: 0, of: Date().addingTimeInterval(86400)) ?? Date()
     @State private var showingWakeModal = false
@@ -56,7 +57,7 @@ struct SleepView: View {
         }
         .sheet(isPresented: $showingWakeModal) { wakeUpSheet }
         .sheet(isPresented: $showPaywall) { PaywallView().environmentObject(store) }
-        .onAppear {
+        .onAppear { ambientPhase = true;
             withAnimation(.spring(response: 0.5, dampingFraction: 0.8)) { appeared = true }
             withAnimation(.easeInOut(duration: 3.0).repeatForever(autoreverses: true)) { orbPulse = true }
             Task { dailyTip = try? await SleepAIService.shared.getDailyTip(recentSessions: sleepStore.sessions) }
@@ -349,9 +350,25 @@ struct SleepView: View {
 
     private var backgroundGlow: some View {
         ZStack {
-            Ellipse().fill(Color.appAccent.opacity(0.12)).frame(width: 400, height: 320).blur(radius: 100).offset(y: -150)
-            Ellipse().fill(Color(hex: "4F46E5").opacity(0.06)).frame(width: 300, height: 250).blur(radius: 80).offset(x: -100, y: 100)
-        }.ignoresSafeArea().allowsHitTesting(false)
+            Color.appBG.ignoresSafeArea()
+            Ellipse()
+                .fill(Color.appAccent.opacity(0.16))
+                .frame(width: 380, height: 280).blur(radius: 80)
+                .offset(x: 60, y: -200).offset(y: ambientPhase ? 22 : -22)
+                .animation(.easeInOut(duration: 6).repeatForever(autoreverses: true), value: ambientPhase)
+            Ellipse()
+                .fill(Color(hex: "4F46E5").opacity(0.08))
+                .frame(width: 320, height: 220).blur(radius: 70)
+                .offset(x: -80, y: 120).offset(x: ambientPhase ? 18 : -18)
+                .animation(.easeInOut(duration: 7.5).repeatForever(autoreverses: true), value: ambientPhase)
+            Ellipse()
+                .fill(Color.appAccent.opacity(0.16).opacity(0.06))
+                .frame(width: 220, height: 160).blur(radius: 60)
+                .offset(x: 20, y: 340).scaleEffect(ambientPhase ? 1.25 : 1.0)
+                .animation(.easeInOut(duration: 5.5).repeatForever(autoreverses: true), value: ambientPhase)
+        }
+        .ignoresSafeArea()
+        .allowsHitTesting(false)
     }
 
     // MARK: - Logic
